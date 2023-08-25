@@ -1,0 +1,53 @@
+
+spring:
+  web-flux:
+    base-path: /api/lgs
+  application:
+    name: label-generation-service
+  main:
+    allow-bean-definition-overriding: true
+  thymeleaf:
+    mode: TEXT
+    content-type: text/html
+
+# THYMELEAF (ThymeleafAutoConfiguration)
+#  spring.thymeleaf.prefix=classpath:/templates/
+#  spring.thymeleaf.suffix=.html
+#  spring.thymeleaf.mode=HTML5
+#  spring.thymeleaf.encoding=UTF-8
+#  spring.thymeleaf.content-type=text/html # ;charset=<encoding> is added
+#  spring.thymeleaf.cache=true # set to false for hot refresh
+management:
+  server:
+    servlet:
+      context-path: /
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, loggers, trace, mappings, configprops, env
+  info:
+    git:
+      mode: full
+  metrics:
+    enable:
+      all: true
+
+logging:
+  level:
+    root: INFO
+
+ai:
+  sahyog:
+    swagger:
+      title: Sahyog Label Generation APIs
+      description: Sahyog Label Generation APIs
+      license: Apache 2.0
+      license-url: www.sahyog.ai
+      version: 1.0.0
+      contact-name: Alok Gupta
+      contact-email: alok@sahyog.ai
+    base64ExclusionListForZpl:
+    templateMetadata:
+      TEST:
+        - "CarrierTrackingNumber2DBarcode"
+        - "CarrierTrackingNumberBarcode128"
