@@ -16,6 +16,7 @@ public class ApplicationProperties {
 
     private final TemplateMetadata templateMetadata = new TemplateMetadata();
     private final Swagger swagger = new Swagger();
+    private final Collection<String> base64ExclusionListForZpl = new ArrayList<>();
 
     @Getter
     @Setter

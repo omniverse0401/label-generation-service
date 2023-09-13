@@ -3,6 +3,7 @@ package ai.sahyog.labelgenerationservice.service.impl;
 
 import ai.sahyog.labelgenerationservice.LabelTypeEnum;
 import ai.sahyog.labelgenerationservice.ServiceEnum;
+import ai.sahyog.labelgenerationservice.config.ApplicationProperties;
 import ai.sahyog.labelgenerationservice.helpers.LabelDataPrepareHelper;
 import ai.sahyog.labelgenerationservice.service.LabelService;
 import ai.sahyog.labelgenerationservice.service.dto.LabelRequestDto;
@@ -35,8 +36,8 @@ public class LabelServiceImpl implements LabelService {
     @Autowired
     private ITemplateEngine templateEngine;
 
-    @Value("${base64ExclusionListForZpl}")
-    private List<String> base64ExclusionListForZpl;
+    @Autowired
+    private ApplicationProperties applicationProperties;
 
     @Override
     public Mono<LabelResponseDto> generateLabel(LabelRequestDto labelRequestDto) {
@@ -68,7 +69,8 @@ public class LabelServiceImpl implements LabelService {
 
     private boolean isOriginBase64Enabled(String origin) {
         if (StringUtils.isBlank(origin)) return false;
-        return (CollectionUtils.isEmpty(base64ExclusionListForZpl) || !base64ExclusionListForZpl.contains(origin));
+        return (CollectionUtils.isEmpty(applicationProperties.getBase64ExclusionListForZpl())
+                || !applicationProperties.getBase64ExclusionListForZpl().contains(origin));
     }
 
 }

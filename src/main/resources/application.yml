@@ -1,7 +1,7 @@
 
 spring:
   web-flux:
-    base-path: /api/lgs
+    base-path: /v1/shipment
   application:
     name: label-generation-service
   main:
@@ -39,13 +39,11 @@ logging:
 ai:
   sahyog:
     swagger:
-      title: Sahyog Label Generation APIs
-      description: Sahyog Label Generation APIs
-      license: Apache 2.0
-      license-url: www.sahyog.ai
+      title: Welink.ai - OpenAPI Spec
+      description: This Welink Open Commerce Network API specifications on the OpenAPI 3.0.
       version: 1.0.0
-      contact-name: Alok Gupta
-      contact-email: alok@sahyog.ai
+      contact-email: tech@sahyog.ai
+      termsOfService: https://welink.ai/terms/
     base64ExclusionListForZpl:
     templateMetadata:
       TEST:

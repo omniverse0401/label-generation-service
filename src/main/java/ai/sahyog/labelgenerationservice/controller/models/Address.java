@@ -12,42 +12,28 @@ import java.io.Serializable;
 @Data
 public class Address implements Serializable {
 
-    @JsonProperty("firstName")
-    @Size(max = 20)
-    private String firstName;
-
-    @JsonProperty("lastName")
-    @Size(max = 20)
-    private String lastName;
-
-    @JsonProperty("addressLine1")
-    @Size(min = 5, max = 30)
-    @NotEmpty(message = "Field is missing")
+    private String name;
+    private String company;
+    @JsonProperty("line_1")
     private String addressLine1;
-
-    @JsonProperty("addressLine2")
-    @Size(max = 30)
+    @JsonProperty("line_2")
     private String addressLine2;
-
+    @JsonProperty("line_3")
+    private String addressLine3;
     @JsonProperty("city")
-    @Size(max = 30)
-    @NotEmpty(message = "Field is missing")
     private String city;
-
-    @JsonProperty("state")
-    @NotEmpty(message = "Field is missing")
     private String state;
+    @JsonProperty("postal_code")
+    private String postalCode;
+    private String country;
+    private String phone;
+    private String email;
+    private String instruction;
+    @JsonProperty("address_type")
+    private AddressType addressType;
+    @JsonProperty("address_purpose")
+    private AddressPurpose addressPurpose;
+    private AddressValidationStatus validate;
 
-    @JsonProperty("zipCode")
-    @Pattern(regexp = "[0-9]{5}", message = "Only 5 digits are allowed")
-    @Schema(example = "12345")
-    @NotEmpty(message = "Field is missing")
-    private String zipCode;
-
-    @JsonProperty("phoneNo")
-    @Schema(example = "0123456664")
-    @Pattern(regexp = "[0-9 \\+ \\- \\( \\)]*", message = "Phone number should contain only digits, +, -, (, )")
-    @Size(max = 15, message = "Phone number should not be more than 15 digits")
-    private String phoneNo;
 
 }
